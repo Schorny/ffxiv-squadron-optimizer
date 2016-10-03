@@ -1,5 +1,4 @@
 function squadvalue(squad, a,b,c,d) {
-    console.log([a,b,c,d]);
     return {
         1: squad[0][1]+squad[a][1]+squad[b][1]+squad[c][1]+squad[d][1],
         2: squad[0][2]+squad[a][2]+squad[b][2]+squad[c][2]+squad[d][2],
@@ -15,8 +14,6 @@ function match(squad, mission) {
             for(var c=b+1; c<8; ++c) {
                 for(var d=c+1; d<9; ++d) {
                     var squadval = squadvalue(squad, a,b,c,d);
-                    console.log([a,b,c,d]);
-                    console.log(squadval);
                     if(mission[1]<=squadval[1] && mission[2]<=squadval[2] && mission[3]<=squadval[3]) {
                         found.push([a,b,c,d]);
                     }
@@ -36,7 +33,6 @@ $(document).on("click", ".solve", function() {
 
     var squad = window.squad;
     var found = match(squad, mission);
-    console.log(found);
 
     if(!found.length) {
         $("#result").html("Your Squad is too weak!");
@@ -70,7 +66,6 @@ $(document).on("click", ".savesquad", function() {
         2:parseInt($($bRow[1]).val()),
         3:parseInt($($bRow[2]).val())
     }
-    console.log("saved");
     window.squad = squad;
     window.Cookies.set("squadron", squad);
 });
